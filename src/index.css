@@ -52,6 +52,7 @@ body{
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 100px;
   justify-content: center;
   align-content: center;
   width: 80%;
@@ -62,6 +63,7 @@ body{
 }
 
 .bookCard{
+  background-color: lightcyan;
   padding-top: 10px;
   position: relative;
   display: flex;
