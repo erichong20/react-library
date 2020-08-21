@@ -1,0 +1,246 @@
+@font-face{
+  font-family: 'Roboto';
+  src: local('Roboto'), url(./fonts/Roboto-Regular.ttf) format('truetype');
+}
+
+@font-face{
+  font-family: 'RobotoBold';
+  src: local('Roboto'), url(./fonts/Roboto-Bold.ttf) format('truetype');
+}
+
+:root{
+  --background-color: #001f3f;
+}
+
+body{
+  font-family: 'Roboto';
+  background-color: lightcyan;
+  position: relative;
+}
+
+.library{
+  min-height: 100vh; /* will cover the 100% of viewport */
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 50px;
+}
+
+.header{
+  font-family: 'RobotoBold';
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.headerContainer {
+  background-color: var(--background-color);
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.headerDescription{
+  font-family: 'Roboto';
+  font-size: 1.5rem;
+  color: lightcoral;
+}
+
+.bookContainer{
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-content: center;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: 200px;
+  grid-gap: 1em;
+}
+
+.bookCard{
+  padding-top: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px black solid;
+}
+
+.bookCard * {
+  text-align: center;
+}
+
+.bookTitle{
+  font-size: 1.5rem;
+  font-family: 'RobotoBold';
+}
+
+.bookAuthor{
+  margin-top: 10px;
+}
+
+.bookPages{
+  margin-top: 10px;
+}
+
+.checkboxContainer{
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.newBook{
+  margin: auto;
+  font-family: "RobotoBold";
+  border: none;
+  box-shadow: 0px 0px 20px 0px white;
+  background-color: var(--background-color);
+  color: white;
+  border-radius: 10px;
+  padding: 10px 10px;
+  font-size: 2rem;
+  width: 200px;
+  justify-content: center;
+  display: flex;
+}
+
+.newBook:hover{
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+#modal{
+  display: block;
+  position: fixed; 
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#modal.hide{
+  display: none;
+}
+
+.formContainer{
+  background-color: #fefefe;
+  margin: 10% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+.formHeader{
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.formLabel{
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.formInputContainer{
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.formSubmit{
+  margin-top: 10px;
+  background-color: lightcyan;
+  border: 1px black solid;
+  height: 30px;
+  border-radius: 4px;
+}
+
+.formSubmit:hover{
+  background-color:#39CCCC;
+  cursor: pointer;
+}
+
+#closeForm{
+  border: none;
+  background-color: white;
+  font-size: 2rem;
+}
+
+#closeForm:hover{
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.radioButtonContainer{
+  display: block;
+}
+
+.cardHeader{
+  justify-content: center;
+  padding-top: 10px;
+  display: inline-flex;
+  position: relative;
+}
+
+.deleteBook{
+  margin-right: 10px;
+  position: absolute;
+  right: 0;
+  border: none;
+  background-color: lightcyan;
+  font-size: 1.5rem;
+}
+
+#deleteBook:hover{
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.hasRead:hover{
+  cursor: pointer;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+	width: 100%;
+
+	display: flex;
+	justify-content: center;
+
+	background-color: var(--background-color);
+}
+
+footer p {
+	font-family: 'Roboto';
+	font-size: 1.3rem;
+	color: white;
+
+	padding: 0.5em 0;
+	line-height: 2em;
+}
+
+footer p a {
+  text-decoration: none;
+	color: lightcoral;
+	font-weight: bold;
+}
+
+footer p a:hover {
+	height: 10px;
+	background-color: lightcoral;
+	color: white;
+}
