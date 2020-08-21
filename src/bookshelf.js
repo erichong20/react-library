@@ -17,10 +17,17 @@ class Bookshelf extends React.Component{
     this.openForm = this.openForm.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.deleteBook = this.deleteBook.bind(this);
+    this.handleUnload = this.handleUnload.bind(this);
     //populating bookshelf
-    this.addBook("Harry Potter","JK Rowling", 321, true);
-    this.addBook("The Hobbit","JRR Tolkien", 304, true);
-    this.addBook("1984","George Orwell", 277, false);
+    this.initializeBooks();
+  }
+
+  componentDidMount(){
+    window.addEventListener("beforeunload", this.handleUnload);
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener("beforeunload", this.handleUnload);
   }
 
   addBook(title,author,pages,checked){
@@ -48,6 +55,11 @@ class Bookshelf extends React.Component{
       return book;
     });
     this.setState({books: updated});
+
+    /*console.log(JSON.stringify(Object.values(this.state.books[0])))
+    if (localStorage.getItem("@react-library/book1")){
+      console.log("book stored");
+    }*/
   }
 
   getFormData(title,author,pages,checked){
@@ -56,6 +68,34 @@ class Bookshelf extends React.Component{
     console.log(`pages: ${pages}`);
     console.log(`completed: ${checked}`);
     this.addBook(title,author,pages,checked);
+  }
+
+  handleUnload(){
+    localStorage.clear();
+    let i = 1;
+    this.state.books.forEach(book => {
+      localStorage.setItem(
+        `@react-library/book${i}`,
+        JSON.stringify(Object.values(book))
+      );
+      i++;
+    });
+  }
+
+  initializeBooks(){
+    if (!localStorage.getItem("@react-library/book1")) {
+      console.log("no local storage");
+      this.addBook("Harry Potter","JK Rowling", 321, true);
+      this.addBook("The Hobbit","JRR Tolkien", 304, true);
+      this.addBook("1984","George Orwell", 277, false);
+      this.addBook("Pale Blue Dot", "Carl Sagan", 421, true);
+    } else {
+      for (let i = 1; i <= localStorage.length; i++) {
+        let bookArr = JSON.parse(localStorage.getItem(`@react-library/book${i}`)
+        );
+        this.addBook(bookArr[0], bookArr[1], bookArr[2], bookArr[3]);
+      }
+    }
   }
 
   openForm(){
@@ -83,6 +123,5 @@ class Bookshelf extends React.Component{
   }
 
 }
-
 
 export {Bookshelf}
