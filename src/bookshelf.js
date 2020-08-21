@@ -6,6 +6,7 @@ import {NewBookForm} from "./form.js"
 import {Book} from "./index.js"
 
 class Bookshelf extends React.Component{
+
   constructor(props){
     super(props);
     this.state = {
@@ -33,7 +34,6 @@ class Bookshelf extends React.Component{
   addBook(title,author,pages,checked){
     const newBook = new Book(title,author,pages,checked);
     this.state.books.push(newBook);
-    //add a book object to the books array when the form is submitted
   }
 
   deleteBook(title){
@@ -55,18 +55,9 @@ class Bookshelf extends React.Component{
       return book;
     });
     this.setState({books: updated});
-
-    /*console.log(JSON.stringify(Object.values(this.state.books[0])))
-    if (localStorage.getItem("@react-library/book1")){
-      console.log("book stored");
-    }*/
   }
 
   getFormData(title,author,pages,checked){
-    console.log(`title: ${title}`);
-    console.log(`author: ${author}`);
-    console.log(`pages: ${pages}`);
-    console.log(`completed: ${checked}`);
     this.addBook(title,author,pages,checked);
   }
 
